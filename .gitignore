@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+.envrc
+
+# Application Data & Downloaded Binaries
+app/data/
+app/core/mediamtx_bin/
+
+# Node.js
+node_modules/
+dist/
+dist-ssr/
+.npm/
+npm-debug.log*
+
+# Docker
+.docker/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
