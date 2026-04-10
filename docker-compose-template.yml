@@ -1,14 +1,12 @@
-version: '3.8'
-
 services:
   webcam_server:
     container_name: standalone_webcam_server
     build: .
     restart: unless-stopped
     ports:
-      - "8000:8000"  # Web UI and API
-      - "8554:8554"  # RTSP Source (Wait, our RTMP server handles this, we map standard MediaMTX ports)
-      - "1935:1935"  # RTMP Source
+      - "8000:8000" # Web UI and API
+      - "8554:8554" # RTSP Source (Wait, our RTMP server handles this, we map standard MediaMTX ports)
+      - "1935:1935" # RTMP Source
     volumes:
       - ./data:/app/data
     environment:
@@ -17,7 +15,7 @@ services:
     # (actually host network is not strictly needed for just API/RTSP, but simplifies USB camera enumeration on some OS)
     # We will definitely need privileged to read /dev/video* devices
     privileged: true
-    devices:
-      # You can manually map specific devices if you don't want to run privileged
-      - "/dev/video0:/dev/video0"
-      - "/dev/video1:/dev/video1"
+    #devices:
+    # You can manually map specific devices if you don't want to run privileged
+    #- "/dev/video0:/dev/video0"
+    #- "/dev/video1:/dev/video1"
