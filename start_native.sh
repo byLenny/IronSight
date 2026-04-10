@@ -35,5 +35,5 @@ pip install -r requirements.txt
 export ADMIN_PASSWORD=${ADMIN_PASSWORD:-"secretpassword"}
 
 echo "Starting Uvicorn Web Server..."
-echo "Access the dashboard at: http://localhost:8000"
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+echo "Access the dashboard at: http://localhost:8008"
+uvicorn app.main:app --host 0.0.0.0 --port 8008

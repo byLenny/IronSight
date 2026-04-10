@@ -35,5 +35,5 @@ if (-not $env:ADMIN_PASSWORD) {
 }
 
 Write-Host "Starting Uvicorn Web Server..."
-Write-Host "Access the dashboard at: http://localhost:8000" -ForegroundColor Green
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+Write-Host "Access the dashboard at: http://localhost:8008" -ForegroundColor Green
+uvicorn app.main:app --host 0.0.0.0 --port 8008

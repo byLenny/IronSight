@@ -5,7 +5,9 @@ import { Camera, LogIn, LogOut, Settings2, Play, Square, RefreshCcw } from 'luci
 
 const AuthContext = createContext();
 
-axios.defaults.baseURL = 'http://localhost:8000';
+// Use relative URL so it perfectly aligns with whatever IP or host name the user uses.
+// (In development, this will be proxied by Vite to the backend)
+axios.defaults.baseURL = '';
 
 function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem('token') || null);
@@ -64,9 +66,9 @@ function Login() {
           <p style={{ color: 'var(--text-secondary)' }}>Welcome back! Please enter your admin password to continue.</p>
         </div>
         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <input 
-            type="password" 
-            placeholder="Admin Password" 
+          <input
+            type="password"
+            placeholder="Admin Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoFocus

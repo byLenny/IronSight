@@ -4,7 +4,7 @@ services:
     build: .
     restart: unless-stopped
     ports:
-      - "8000:8000" # Web UI and API
+      - "8008:8008" # Web UI and API
       - "8554:8554" # RTSP Source (Wait, our RTMP server handles this, we map standard MediaMTX ports)
       - "1935:1935" # RTMP Source
     volumes:
