@@ -20,7 +20,7 @@ The fastest and safest way to deploy the system in production is via Docker. Thi
    ```
    *(Alternatively: `docker compose up --build -d`)*
 
-3. **Access the Web Panel**: Navigate to `http://localhost:8000`
+3. **Access the Web Panel**: Navigate to `http://localhost:8008`
 4. **Login**: The default administration password is `secretpassword` (you can configure this in the `docker-compose.yml`!).
 
 ### Exposing USB Cameras via Docker
@@ -67,7 +67,7 @@ Run the Python engine natively. This handles hardware access, ffmpeg pipes, and 
 ```bash
 export ADMIN_PASSWORD="my_dev_password"
 pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn app.main:app --host 0.0.0.0 --port 8008 --reload
 ```
 
 ### 2. Boot up the Frontend (Vite + React)
@@ -78,7 +78,7 @@ npm install
 npm run dev
 ```
 
-Vite will start a hot-reloading dev server at `http://localhost:5173`. Any changes to `Dashboard.jsx`, the components, or `index.css` will reflect instantly. The frontend is hard-coded during development to tunnel all authenticated API requests to `http://localhost:8000` via CORS!
+Vite will start a hot-reloading dev server at `http://localhost:5173`. Any changes to `Dashboard.jsx`, the components, or `index.css` will reflect instantly. The frontend is hard-coded during development to tunnel all authenticated API requests to `http://localhost:8008` via CORS!
 
 ## 📡 Accessing Streams
 Once configured through the Web Panel, your hardware is intelligently ported as RTSP networks. By default, MediaMTX serves out of port `8554`. 

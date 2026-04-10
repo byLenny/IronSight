@@ -39,11 +39,11 @@ COPY app /app/app
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 
 # Expose ports
-EXPOSE 8000
+EXPOSE 8008
 EXPOSE 8554
 EXPOSE 1935
 
 # MediaMTX will be downloaded at runtime by python if not present, but 
 # we rely on python to spawn it.
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8008"]
