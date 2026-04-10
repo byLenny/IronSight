@@ -19,6 +19,7 @@ npm-debug.log*
 
 # Docker
 .docker/
+docker-compose.yml
 
 # IDE / Editor
 .vscode/
