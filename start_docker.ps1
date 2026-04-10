@@ -4,15 +4,10 @@ if (!(Get-Command nvm -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
-Write-Host "Installing and using Node.js 22.22 via nvm..."
-nvm install 22.22
-nvm use 22.22
-
-# Check for docker
-if (!(Get-Command docker -ErrorAction SilentlyContinue)) {
-    Write-Host "docker is not installed. Please install Docker." -ForegroundColor Red
-    exit 1
-}
+$NodeVersion = Get-Content .nvmrc
+Write-Host "Installing and using Node.js $NodeVersion via nvm..."
+nvm install $NodeVersion
+nvm use $NodeVersion
 
 echo "Building frontend..."
 Push-Location frontend
@@ -24,3 +19,4 @@ Pop-Location
 
 echo "Starting Standalone IronSight Server..."
 docker compose up --build
+

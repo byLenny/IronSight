@@ -6,18 +6,10 @@ if [ -z "$NVM_DIR" ]; then
 fi
 if [ -s "$NVM_DIR/nvm.sh" ]; then
     \. "$NVM_DIR/nvm.sh"
+    nvm install
+    nvm use
 else
     echo "nvm is not installed. Please install nvm first: https://github.com/nvm-sh/nvm"
-    exit 1
-fi
-
-echo "Installing and using Node.js 22.22 via nvm..."
-nvm install 22.22
-nvm use 22.22
-
-# Check if docker is available
-if ! command -v docker &> /dev/null; then
-    echo "docker could not be found. Please install Docker."
     exit 1
 fi
 
@@ -31,3 +23,4 @@ fi
 
 echo "Starting Standalone IronSight Server..."
 docker compose up --build
+

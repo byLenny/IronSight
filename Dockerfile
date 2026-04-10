@@ -1,3 +1,15 @@
+# Stage 1: Build the frontend
+FROM node:22-slim AS frontend-builder
+
+WORKDIR /app/frontend
+
+COPY frontend/package*.json ./
+RUN npm install
+
+COPY frontend/ ./
+RUN npm run build
+
+# Stage 2: Build the python backend
 FROM python:3.11-slim
 
 ENV PYTHONUNBUFFERED=1
@@ -22,7 +34,9 @@ RUN mkdir -p /app/data
 
 # Copy all source files
 COPY app /app/app
-COPY frontend/dist /app/frontend/dist
+
+# Copy built frontend from the builder stage
+COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 
 # Expose ports
 EXPOSE 8000
